@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_deneme3/card_list_tile.dart';
+import 'package:flutter_deneme3/custom_scroll_ve_slivers.dart';
 import 'package:flutter_deneme3/dropdown_button_kullanimi.dart';
 import 'package:flutter_deneme3/grid_view_kullanimi.dart';
 import 'package:flutter_deneme3/image_widgets.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: GridViewKullanimi(),
+      home: CollapsableToolBarOrnek(),
       builder: EasyLoading.init(),
     );
   }
