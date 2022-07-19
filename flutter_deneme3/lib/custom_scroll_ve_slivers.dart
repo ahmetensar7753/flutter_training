@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
 
 class CollapsableToolBarOrnek extends StatelessWidget {
   const CollapsableToolBarOrnek({Key? key}) : super(key: key);
@@ -24,10 +25,51 @@ class CollapsableToolBarOrnek extends StatelessWidget {
               ),
             ),
           ),
-          SliverList(
+          SliverPadding(
+            padding: EdgeInsets.all(20),
+            sliver: SliverList(
+              delegate: SliverChildListDelegate(
+                sabitListeElemanlari(),
+              ),
+            ),
+          ),
+
+          SliverPadding(
+            padding: EdgeInsets.all(10),
+            sliver: SliverList(
+              delegate: SliverChildBuilderDelegate(_dinamikElemanUretenFunc,
+                  childCount: 10),
+            ),
+          ),
+
+          SliverFixedExtentList(
+              delegate: SliverChildListDelegate(sabitListeElemanlari()),
+              itemExtent: 100),
+          SliverFixedExtentList(
+              delegate: SliverChildBuilderDelegate(_dinamikElemanUretenFunc,
+                  childCount: 20),
+              itemExtent: 150),
+          //sabit elemanlarla 1 satırda kaç eleman olacağını verdiğimiz grid türü
+          SliverGrid(
             delegate: SliverChildListDelegate(
               sabitListeElemanlari(),
             ),
+            gridDelegate:
+                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+          ),
+          //dinamik elemanlarla 1 satırda kaç eleman olacağını verdiğimiz grid türü.
+          SliverGrid(
+            delegate: SliverChildBuilderDelegate(_dinamikElemanUretenFunc,
+                childCount: 21),
+            gridDelegate:
+                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+          ),
+          //dinamik elemanlarla 1 satırdaki elemanın max genişliğini verdiğimiz grid türü.
+          SliverGrid(
+            delegate: SliverChildBuilderDelegate(_dinamikElemanUretenFunc,
+                childCount: 6),
+            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 150),
           ),
         ],
       ),
@@ -87,5 +129,27 @@ class CollapsableToolBarOrnek extends StatelessWidget {
         alignment: Alignment.center,
       ),
     ];
+  }
+
+  Widget _dinamikElemanUretenFunc(BuildContext context, int index) {
+    return Container(
+      height: 150,
+      margin: EdgeInsets.only(bottom: 20),
+      child: Text(
+        "${index + 1}. Dinamik Liste Elemanı",
+        style: TextStyle(fontSize: 18),
+        textAlign: TextAlign.center,
+      ),
+      color: _rasgeleRenkUret(),
+      alignment: Alignment.center,
+    );
+  }
+
+  Color _rasgeleRenkUret() {
+    return Color.fromARGB(
+        math.Random().nextInt(255),
+        math.Random().nextInt(255),
+        math.Random().nextInt(255),
+        math.Random().nextInt(255));
   }
 }
