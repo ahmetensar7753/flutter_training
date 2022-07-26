@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_inputs/diger_form_elemanlari.dart';
+import 'package:flutter_inputs/global_key_kullanimi.dart';
+import 'package:flutter_inputs/text_form_field_kullanimi.dart';
 
 void main() => runApp(MyApp());
 
@@ -7,9 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Input İslemleri',
-      home: TextFieldIslemleri(
-        title: "Form Islemleri",
-      ),
+      home: DigerFormElemanlari(),
     );
   }
 }
