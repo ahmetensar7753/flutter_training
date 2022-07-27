@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_inputs/date_time_picker.dart';
 import 'package:flutter_inputs/diger_form_elemanlari.dart';
 import 'package:flutter_inputs/global_key_kullanimi.dart';
 import 'package:flutter_inputs/text_form_field_kullanimi.dart';
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Input İslemleri',
-      home: DigerFormElemanlari(),
+      home: TarihSaatOrnek(),
     );
   }
 }
